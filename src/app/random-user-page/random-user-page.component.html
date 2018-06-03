@@ -1,0 +1,9 @@
+<h1>Random User</h1>
+
+<button (click)="getRandomUser()">
+  Get User
+</button>
+
+<pre>
+  {{!!randomUser ? (randomUser | json) : '' }}
+</pre>
