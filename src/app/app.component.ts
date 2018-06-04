@@ -21,7 +21,7 @@ export class AppComponent implements AfterContentChecked {
   }
 
   logIn() {
-    this.isLogined = !this.isLogined;
+    // this.isLogined = !this.isLogined;
     console.log(this.route.snapshot.children[0].routeConfig.path);
   }
 

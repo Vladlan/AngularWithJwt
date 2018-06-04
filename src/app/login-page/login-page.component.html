@@ -2,11 +2,39 @@
   Login Page
 </h1>
 
-<form>
+<form (ngSubmit)="submitForm(form)" #form="ngForm">
+    <div>
+    <label>Name</label>
+    </div>
   <div>
-    <label for="">Name</label>
-    <input type="text">
+  <input
+      type="text"
+      name="Name"
+      ngModel
+      required
+    >
   </div>
-  <label for="">Password</label>
-  <input type="password">
+
+  <div>
+  <label>Password</label>
+  </div>
+
+  <div>
+  <input
+    type="password"
+    name="Password"
+    ngModel
+    required
+  >
+  </div>
+
+  <div>
+  <button
+    type="submit"
+    [disabled]="!form.valid"
+  >
+    Submit
+  </button>
+  </div>
+
 </form>
