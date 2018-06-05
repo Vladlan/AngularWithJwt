@@ -1,5 +1,6 @@
 import {AfterContentChecked, Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {AuthService} from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,10 @@ export class AppComponent implements AfterContentChecked {
   isLogined = false;
   currentUrl = '';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    public authService: AuthService
+  ) {
   }
 
   ngAfterContentChecked() {
@@ -20,10 +24,10 @@ export class AppComponent implements AfterContentChecked {
     }
   }
 
-  logIn() {
-    // this.isLogined = !this.isLogined;
-    console.log(this.route.snapshot.children[0].routeConfig.path);
-  }
+  // logIn() {
+  //   // this.isLogined = !this.isLogined;
+  //   console.log(this.route.snapshot.children[0].routeConfig.path);
+  // }
 
 
 }

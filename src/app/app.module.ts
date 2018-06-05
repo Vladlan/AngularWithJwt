@@ -10,6 +10,7 @@ import { RandomUserPageComponent } from './random-user-page/random-user-page.com
 import {AppRoutingModule} from './app-routing.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import {AuthService} from './services/auth.service';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [ RandomUserService ],
+  providers: [ RandomUserService, AuthService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

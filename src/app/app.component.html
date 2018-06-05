@@ -4,16 +4,15 @@
   <nav>
     <div *ngIf="currentUrl !== 'login'">
     <button
-      *ngIf="!isLogined"
-      (click)="logIn()"
+      *ngIf="!authService.isLoggedIn"
       routerLink="/login"
     >
       Log In
     </button>
 
     <button
-      *ngIf="isLogined"
-      (click)="logIn()"
+      *ngIf="authService.isLoggedIn"
+      (click)="authService.logOut()"
       routerLink="/"
     >
       Log Out
@@ -30,8 +29,8 @@
         </a>
       </li>
 
-      <li *ngIf="isLogined">
-        <a *ngIf="isLogined"
+      <li *ngIf="authService.isLoggedIn">
+        <a
            routerLink="/randUser"
            routerLinkActive="active"
         >Random User Page

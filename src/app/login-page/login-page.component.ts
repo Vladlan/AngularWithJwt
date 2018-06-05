@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import {AppComponent} from '../app.component';
+import {environment} from '../../environments/environment';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -10,35 +11,39 @@ import {AppComponent} from '../app.component';
 })
 export class LoginPageComponent implements OnInit {
 
-  submitted = false;
   Name = 'Vlad';
   Password = '12345';
 
-  constructor(private http: HttpClient, appComponent: AppComponent) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) {
+  }
 
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   submitForm(form: NgForm) {
-    this.submitted = true;
-    console.log('form submitted');
-    console.log(form);
     const Name = form.value.Name;
     const Password = form.value.Password;
 
     this.login(Name, Password).subscribe(
       (data: any) => {
         console.log(data);
+        if (data) {
+          this.authService.logIn();
+        } else {
+          alert('Wrong password or Name');
+        }
       }
     );
-
   }
 
   login(name, password) {
-    const API_URL = 'http://localhost:3000';
-    return this.http.post(API_URL + '/login', {
+    return this.http.post(environment.BASE_URL + '/login', {
       name: name,
       password: password
-    } );
+    });
   }
 }
