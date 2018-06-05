@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {RandomUserService} from './services/random-user-service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RandomUserPageComponent } from './random-user-page/random-user-page.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -29,6 +29,10 @@ import {httpInterceptorProviders} from './http-interceptors';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'auth-token',
+      headerName: 'auth-token',
+    }),
     AppRoutingModule,
   ],
   providers: [

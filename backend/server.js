@@ -3,11 +3,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const jwt = require('jsonwebtoken');
+const expressJwt = require('express-jwt');
 
 const jwtSecret = 'qwerty12345678';
 
 app.use(cors());
 app.use(bodyParser.json());
+// app.use(expressJwt({secret: jwtSecret}).unless( {path: [ '/login ']} ));
 
 let faker = require('faker');
 
@@ -18,12 +20,20 @@ const user = {
 };
 
 app.get('/', function (req, res) {
+  console.log(req);
   res.send('Hello World!');
 });
 
 app.get('/random-user', function (req, res) {
   let user = faker.helpers.createCard();
+  console.log(req);
   res.json(user);
+});
+
+app.get('/check', function (req, res) {
+  let user = req.headers;
+
+  console.log(user);
 });
 
 app.post('/login', authenticate, function (req, res) {
@@ -62,5 +72,4 @@ function authenticate(req, res, next) {
     res.send(false);
   }
   next();
-
 }

@@ -37,6 +37,7 @@ export class LoginPageComponent implements OnInit {
         if (data) {
 
           this.localStorageService.setItem('auth-token', data.token);
+          document.cookie = `auth-token=${data.token}`;
 
           this.authService.logIn();
           this.router.navigate(['/randUser']);
