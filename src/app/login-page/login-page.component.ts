@@ -11,6 +11,8 @@ import {AppComponent} from '../app.component';
 export class LoginPageComponent implements OnInit {
 
   submitted = false;
+  Name = 'Vlad';
+  Password = '12345';
 
   constructor(private http: HttpClient, appComponent: AppComponent) {}
 

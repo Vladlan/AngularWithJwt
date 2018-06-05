@@ -34,11 +34,11 @@ function authenticate(req, res, next) {
   console.log('authentificate');
   let body = req.body;
   if (!body) {
-    res.status(400).end('no data for authentication')
+    // res.status(400).end('no data for authentication');
     res.send(false);
   }
   if (body.name !== user.name || body.password !== user.password) {
-    res.status(401).end('Name or Password incorrect')
+    // res.status(401).end('Name or Password incorrect');
     res.send(false);
   }
   next();

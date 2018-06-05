@@ -4,26 +4,29 @@
 
 <form (ngSubmit)="submitForm(form)" #form="ngForm">
     <div>
-    <label>Name</label>
+    <label for="Name">Name</label>
     </div>
   <div>
   <input
       type="text"
       name="Name"
-      ngModel
+      [(ngModel)]="Name"
+      id="Name"
       required
     >
   </div>
 
   <div>
-  <label>Password</label>
+  <label for="Password">Password</label>
   </div>
 
   <div>
   <input
     type="password"
     name="Password"
-    ngModel
+    [(ngModel)]="Password"
+    id="Password"
+    placeholder="12345"
     required
   >
   </div>
