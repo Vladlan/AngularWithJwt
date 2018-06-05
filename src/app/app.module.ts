@@ -14,6 +14,7 @@ import {AuthService} from './services/auth.service';
 import {AuthTruthyGuardService} from './services/auth-truthy-guard.service';
 import {AuthFalsyGuardService} from './services/auth-falsy-guard.service';
 import {LocalStorageService} from './services/localstorage.service';
+import {httpInterceptorProviders} from './http-interceptors';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {LocalStorageService} from './services/localstorage.service';
     AppRoutingModule,
   ],
   providers: [
+    httpInterceptorProviders,
     RandomUserService,
     AuthService,
     AuthTruthyGuardService,

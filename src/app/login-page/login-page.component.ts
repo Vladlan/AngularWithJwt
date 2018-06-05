@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
+import {LocalStorageService} from '../services/localstorage.service';
 
 @Component({
   selector: 'app-login-page',
@@ -18,7 +19,8 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private localStorageService: LocalStorageService
   ) {}
 
 
@@ -30,9 +32,12 @@ export class LoginPageComponent implements OnInit {
     const Password = form.value.Password;
 
     this.login(Name, Password).subscribe(
-      (data: boolean) => {
+      (data: {token: string}) => {
         console.log(data);
         if (data) {
+
+          this.localStorageService.setItem('auth-token', data.token);
+
           this.authService.logIn();
           this.router.navigate(['/randUser']);
 
