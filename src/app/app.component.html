@@ -2,7 +2,7 @@
 
 <header>
   <nav>
-    <div *ngIf="currentUrl !== 'login'">
+    <div>
     <button
       *ngIf="!authService.isLoggedIn"
       routerLink="/login"

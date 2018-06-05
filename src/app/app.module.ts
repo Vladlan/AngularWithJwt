@@ -13,6 +13,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import {AuthService} from './services/auth.service';
 import {AuthTruthyGuardService} from './services/auth-truthy-guard.service';
 import {AuthFalsyGuardService} from './services/auth-falsy-guard.service';
+import {LocalStorageService} from './services/localstorage.service';
 
 
 @NgModule({
@@ -29,7 +30,13 @@ import {AuthFalsyGuardService} from './services/auth-falsy-guard.service';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [ RandomUserService, AuthService, AuthTruthyGuardService, AuthFalsyGuardService ],
+  providers: [
+    RandomUserService,
+    AuthService,
+    AuthTruthyGuardService,
+    AuthFalsyGuardService,
+    LocalStorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

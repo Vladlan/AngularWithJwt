@@ -27,7 +27,9 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "faker": "^4.1.0",
+    "jsonwebtoken": "^8.2.2",
     "rxjs": "^5.5.6",
+    "uuid": "^3.2.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

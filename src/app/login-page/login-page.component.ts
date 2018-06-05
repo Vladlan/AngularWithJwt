@@ -19,8 +19,7 @@ export class LoginPageComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private router: Router
-  ) {
-  }
+  ) {}
 
 
   ngOnInit() {
@@ -40,7 +39,8 @@ export class LoginPageComponent implements OnInit {
         } else {
           alert('Wrong password or Name');
         }
-      }
+      },
+      error => { alert(error); }
     );
   }
 
