@@ -9,6 +9,13 @@ export class AuthService {
     this.isLoggedIn = true;
   }
 
+  isAuth() {
+    return new Promise( (res, rej) => {
+      setTimeout( () => { res(this.isLoggedIn);
+      }, 100);
+    });
+  }
+
   logOut() {
     this.isLoggedIn = false;
   }

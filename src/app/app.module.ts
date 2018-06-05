@@ -11,6 +11,8 @@ import {AppRoutingModule} from './app-routing.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import {AuthService} from './services/auth.service';
+import {AuthTruthyGuardService} from './services/auth-truthy-guard.service';
+import {AuthFalsyGuardService} from './services/auth-falsy-guard.service';
 
 
 @NgModule({
@@ -27,7 +29,7 @@ import {AuthService} from './services/auth.service';
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [ RandomUserService, AuthService ],
+  providers: [ RandomUserService, AuthService, AuthTruthyGuardService, AuthFalsyGuardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {AuthService} from '../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -16,7 +17,8 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -29,10 +31,12 @@ export class LoginPageComponent implements OnInit {
     const Password = form.value.Password;
 
     this.login(Name, Password).subscribe(
-      (data: any) => {
+      (data: boolean) => {
         console.log(data);
         if (data) {
           this.authService.logIn();
+          this.router.navigate(['/randUser']);
+
         } else {
           alert('Wrong password or Name');
         }
