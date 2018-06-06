@@ -3,7 +3,6 @@ import {LocalStorageService} from './localstorage.service';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
-import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
@@ -34,11 +33,10 @@ export class AuthService {
   }
 
   check() {
-    return this.http.get<Observable<any>>(environment.BASE_URL + '/check')
-      .pipe(tap((data) => {
-        console.log('data', data);
+    return this.http.get(environment.BASE_URL + '/check')
+      .pipe(tap((data: boolean) => {
           this.isLoggedIn = data;
-          return null;
+          return data;
         }
         )
       );

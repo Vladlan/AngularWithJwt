@@ -24,8 +24,7 @@ export class LoginPageComponent implements OnInit {
   ) {}
 
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   submitForm(form: NgForm) {
     const Name = form.value.Name;
@@ -33,15 +32,10 @@ export class LoginPageComponent implements OnInit {
 
     this.login(Name, Password).subscribe(
       (data: {token: string}) => {
-        console.log(data);
         if (data) {
-
           this.localStorageService.setItem('auth-token', data.token);
-          document.cookie = `auth-token=${data.token}`;
-
           this.authService.logIn();
           this.router.navigate(['/randUser']);
-
         } else {
           alert('Wrong password or Name');
         }

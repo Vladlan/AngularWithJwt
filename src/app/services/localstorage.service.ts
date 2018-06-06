@@ -20,7 +20,6 @@ export class LocalStorageService {
 
   removeItem(key: string): void {
     localStorage.removeItem(key);
-    document.cookie = `auth-token=null`;
   }
 
 }

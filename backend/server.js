@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const jwt = require('jsonwebtoken');
-const expressJwt = require('express-jwt');
+// const expressJwt = require('express-jwt');
 
 const jwtSecret = 'qwerty12345678';
 
@@ -20,40 +20,51 @@ const user = {
 };
 
 app.get('/', function (req, res) {
-  console.log(req);
   res.send('Hello World!');
 });
 
 app.get('/random-user', function (req, res) {
   let user = faker.helpers.createCard();
-  console.log(req);
   res.json(user);
 });
 
 app.get('/check', function (req, res) {
-  let user = req.headers;
+  let userToken = req.get('authorization');
 
-  console.log(user);
+  userToken = userToken.slice(7);
+
+  jwt.verify(userToken, jwtSecret, function (err, decoded) {
+    if (err) {
+      console.log(err);
+      res.send(false);
+    }
+    if (decoded) {
+      console.log('DECODED!');
+      res.send(true);
+    }
+  });
+
 });
 
 app.post('/login', authenticate, function (req, res) {
-  // console.log('************************************************************');
-  // console.log(req);
-  // console.log('************************************************************');
-  // res.send(true);
-
   if (req.body) {
     let token = jwt.sign(
       {
         Name: req.body.name,
         id: 'uuidV1'
       },
-      jwtSecret
+      jwtSecret,
+      {
+        algorithm: 'HS256',
+        expiresIn: 15
+      }
     );
 
-    res.send({
-      token: token
-    })
+    res.send(
+      {
+        token: token
+      }
+    )
   }
 });
 
