@@ -37,6 +37,7 @@ export class LoginPageComponent implements OnInit {
           this.authService.logIn();
           this.router.navigate(['/randUser']);
         } else {
+          console.log(data);
           alert('Wrong password or Name');
         }
       },

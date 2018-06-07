@@ -2,14 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const jwt = require('jsonwebtoken');
-// const expressJwt = require('express-jwt');
-
-const jwtSecret = 'qwerty12345678';
+const jwtService = require('./jwt.service');
 
 app.use(cors());
 app.use(bodyParser.json());
-// app.use(expressJwt({secret: jwtSecret}).unless( {path: [ '/login ']} ));
 
 let faker = require('faker');
 
@@ -20,7 +16,7 @@ const user = {
 };
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  res.send(`Hello World!`);
 });
 
 app.get('/random-user', function (req, res) {
@@ -30,39 +26,15 @@ app.get('/random-user', function (req, res) {
 
 app.get('/check', function (req, res) {
   let userToken = req.get('authorization');
-
   userToken = userToken.slice(7);
-
-  jwt.verify(userToken, jwtSecret, function (err, decoded) {
-    if (err) {
-      console.log(err);
-      res.send(false);
-    }
-    if (decoded) {
-      console.log('DECODED!');
-      res.send(true);
-    }
-  });
-
+  res.send(jwtService.verifyJWT(userToken));
 });
 
 app.post('/login', authenticate, function (req, res) {
   if (req.body) {
-    let token = jwt.sign(
-      {
-        Name: req.body.name,
-        id: 'uuidV1'
-      },
-      jwtSecret,
-      {
-        algorithm: 'HS256',
-        expiresIn: 1500
-      }
-    );
-
     res.send(
       {
-        token: token
+        token: jwtService.getJWT(req.body.name)
       }
     )
   }
