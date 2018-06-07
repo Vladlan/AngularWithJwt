@@ -8,7 +8,7 @@ import {AuthFalsyGuardService} from './services/auth-falsy-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'randUser', component: RandomUserPageComponent, canActivate: [AuthTruthyGuardService] },
+  { path: 'randUser', component: RandomUserPageComponent },
   { path: 'login', component: LoginPageComponent, canActivate: [AuthFalsyGuardService] },
   { path: '**', redirectTo: '' }
 ];

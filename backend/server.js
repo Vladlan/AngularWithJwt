@@ -56,7 +56,7 @@ app.post('/login', authenticate, function (req, res) {
       jwtSecret,
       {
         algorithm: 'HS256',
-        expiresIn: 15
+        expiresIn: 1500
       }
     );
 

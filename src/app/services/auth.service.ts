@@ -21,9 +21,10 @@ export class AuthService {
 
   isAuth() {
     return new Promise((res, rej) => {
-      setTimeout(() => {
-        res(this.isLoggedIn);
-      }, 100);
+      //   setTimeout(() => {
+      //     res(this.isLoggedIn);
+      //   }, 1000);
+      res(this.isLoggedIn);
     });
   }
 
