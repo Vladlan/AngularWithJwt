@@ -16,25 +16,13 @@ exports.getJWT = function(name) {
   );
 };
 
-exports.verifyJWT = function(token) {
+exports.verifyAndDecodeJWT = function(token) {
   return jwt.verify(token, jwtSecret, (err, decoded) => {
     if (err) {
       return false
     }
     if (decoded) {
-      return true
+      return decoded
     }
   });
 };
-
-
-// module.exports = getJWT;
-// module.exports = verifyJWT;
-
-// module.exports = {
-//   getJWT: getJWT,
-//   verifyJWT: verifyJWT
-// };
-//
-// exports.getJWT = getJWT;
-// exports.verifyJWT = verifyJWT;

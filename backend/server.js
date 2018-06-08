@@ -27,7 +27,13 @@ app.get('/random-user', function (req, res) {
 app.get('/check', function (req, res) {
   let userToken = req.get('authorization');
   userToken = userToken.slice(7);
-  res.send(jwtService.verifyJWT(userToken));
+
+  if ( jwtService.verifyAndDecodeJWT(userToken) ) {
+    //Maybe later user will be replaced with db
+    res.send(jwtService.verifyAndDecodeJWT(userToken).id === user.id);
+  } else {
+    res.send(false);
+  }
 });
 
 app.post('/login', authenticate, function (req, res) {
