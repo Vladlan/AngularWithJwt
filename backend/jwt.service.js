@@ -2,11 +2,20 @@ const jwt = require('jsonwebtoken');
 
 const jwtSecret = 'qwerty12345678';
 
-exports.getJWT = function(name) {
+const user = {
+  "email": "lanvlad@mail.ru",
+  "surname": "Lan",
+  "name": "Vlad1",
+  "password": "12345",
+  "uuid": "uuid3.0251152614430366"
+};
+
+exports.getJWT = function(someUser) {
   return jwt.sign(
     {
-      Name: name,
-      id: 'uuidV1'
+      email: someUser.email,
+      name: someUser.name,
+      id: someUser.uuid
     },
     jwtSecret,
     {

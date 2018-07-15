@@ -1,0 +1,16 @@
+{
+  "lanvlad@mail.ru": {
+    "email": "lanvlad@mail.ru",
+    "surname": "Lan",
+    "name": "Vlad1",
+    "password": "12345",
+    "uuid": "uuid3.0251152614430366"
+  },
+  "lanvlad@mail2.ru": {
+    "email": "lanvlad@mail2.ru",
+    "surname": "Lan",
+    "name": "Vlad",
+    "password": "12345",
+    "uuid": "uuid0.6425040433755114"
+  }
+}

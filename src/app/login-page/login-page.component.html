@@ -1,17 +1,17 @@
 <h1>
-  Login Page
+  Log In Page
 </h1>
 
 <form (ngSubmit)="submitForm(form)" #form="ngForm">
-    <div>
-    <label for="Name">Name</label>
-    </div>
   <div>
-  <input
+    <label for="Email">Email</label>
+  </div>
+  <div>
+    <input
       type="text"
-      name="Name"
-      [(ngModel)]="Name"
-      id="Name"
+      name="Email"
+      [(ngModel)]="Email"
+      id="Email"
       required
     >
   </div>

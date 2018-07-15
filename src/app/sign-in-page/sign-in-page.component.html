@@ -1,0 +1,73 @@
+<h1>
+  Sig In Page
+</h1>
+
+<form (ngSubmit)="submitForm(form)" #form="ngForm">
+  <div>
+    <label for="Email">Email</label>
+  </div>
+  <div>
+    <input
+      type="text"
+      name="Email"
+      [(ngModel)]="Email"
+      id="Email"
+      required
+    >
+  </div>
+
+  <div>
+    <label for="Surname">Surname</label>
+  </div>
+  <div>
+    <input
+      type="text"
+      name="Surname"
+      [(ngModel)]="Surname"
+      id="Surname"
+      required
+    >
+  </div>
+
+  <div>
+    <label for="Name">Name</label>
+  </div>
+  <div>
+    <input
+      type="text"
+      name="Name"
+      [(ngModel)]="Name"
+      id="Name"
+      required
+    >
+  </div>
+
+  <div>
+    <label for="Password">
+      Password
+    </label>
+  </div>
+
+  <div>
+    <input
+      type="password"
+      name="Password"
+      [(ngModel)]="Password"
+      id="Password"
+      placeholder="12345"
+      required
+    >
+  </div>
+
+  <div>
+    <button
+      type="submit"
+      [disabled]="!form.valid"
+    >
+      Submit
+    </button>
+>
+
+  </div>
+
+</form>

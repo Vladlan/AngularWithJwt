@@ -15,6 +15,7 @@ import {AuthTruthyGuardService} from './services/auth-truthy-guard.service';
 import {AuthFalsyGuardService} from './services/auth-falsy-guard.service';
 import {LocalStorageService} from './services/localstorage.service';
 import {httpInterceptorProviders} from './http-interceptors';
+import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {httpInterceptorProviders} from './http-interceptors';
     AppComponent,
     RandomUserPageComponent,
     MainPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    SignInPageComponent
   ],
   imports: [
     BrowserModule,

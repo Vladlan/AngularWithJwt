@@ -13,7 +13,7 @@ import {LocalStorageService} from '../services/localstorage.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  Name = 'Vlad';
+  Email = 'lanvlad@mail.ru';
   Password = '12345';
 
   constructor(
@@ -21,18 +21,20 @@ export class LoginPageComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private localStorageService: LocalStorageService
-  ) {}
+  ) {
+  }
 
-
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   submitForm(form: NgForm) {
-    const Name = form.value.Name;
+    const Email = form.value.Email;
     const Password = form.value.Password;
 
-    this.login(Name, Password).subscribe(
-      (data: {token: string}) => {
+    this.login(Email, Password).subscribe(
+      (data: { token: string } ) => {
         if (data) {
+          console.log(data);
           this.localStorageService.setItem('auth-token', data.token);
           this.authService.logIn();
           this.router.navigate(['/randUser']);
@@ -41,13 +43,15 @@ export class LoginPageComponent implements OnInit {
           alert('Wrong password or Name');
         }
       },
-      error => { alert(error); }
+      error => {
+        console.log(error);
+      }
     );
   }
 
-  login(name, password) {
+  login(email, password) {
     return this.http.post(environment.BASE_URL + '/login', {
-      name: name,
+      email: email,
       password: password
     });
   }
