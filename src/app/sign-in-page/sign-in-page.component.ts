@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../services/auth.service';
-import {Router} from '@angular/router';
+import { Router} from '@angular/router';
 import {LocalStorageService} from '../services/localstorage.service';
 import {NgForm} from '@angular/forms';
 import {environment} from '../../environments/environment';

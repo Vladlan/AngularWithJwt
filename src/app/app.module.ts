@@ -11,11 +11,12 @@ import {AppRoutingModule} from './app-routing.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import {AuthService} from './services/auth.service';
-import {AuthTruthyGuardService} from './services/auth-truthy-guard.service';
 import {AuthFalsyGuardService} from './services/auth-falsy-guard.service';
 import {LocalStorageService} from './services/localstorage.service';
 import {httpInterceptorProviders} from './http-interceptors';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
+import {AuthTruthyGuardService} from './services/auth-truthy-guard.service';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
     RandomUserPageComponent,
     MainPageComponent,
     LoginPageComponent,
-    SignInPageComponent
+    SignInPageComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +43,8 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
     httpInterceptorProviders,
     RandomUserService,
     AuthService,
-    AuthTruthyGuardService,
     AuthFalsyGuardService,
+    AuthTruthyGuardService,
     LocalStorageService
   ],
   bootstrap: [AppComponent]

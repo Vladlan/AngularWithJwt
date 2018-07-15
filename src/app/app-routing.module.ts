@@ -5,10 +5,11 @@ import {MainPageComponent} from './main-page/main-page.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {AuthFalsyGuardService} from './services/auth-falsy-guard.service';
 import {SignInPageComponent} from './sign-in-page/sign-in-page.component';
+import {AuthTruthyGuardService} from './services/auth-truthy-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'randUser', component: RandomUserPageComponent },
+  { path: 'randUser', component: RandomUserPageComponent, canActivate: [AuthTruthyGuardService] },
   { path: 'login', component: LoginPageComponent, canActivate: [AuthFalsyGuardService] },
   { path: 'signIn', component: SignInPageComponent, canActivate: [AuthFalsyGuardService] },
   { path: '**', redirectTo: '' }

@@ -44,7 +44,7 @@ export class LoginPageComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
+        alert(error.error.error.message);
       }
     );
   }

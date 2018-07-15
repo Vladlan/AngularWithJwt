@@ -8,6 +8,7 @@ import {tap} from 'rxjs/operators';
 export class AuthService {
 
   isLoggedIn = false;
+  isAuthorizationChecked = true;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -21,9 +22,7 @@ export class AuthService {
 
   isAuth() {
     return new Promise((res, rej) => {
-      //   setTimeout(() => {
-      //     res(this.isLoggedIn);
-      //   }, 1000);
+      console.log(`isLoggedIn = ${this.isLoggedIn} in auth.service`);
       res(this.isLoggedIn);
     });
   }

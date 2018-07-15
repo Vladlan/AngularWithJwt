@@ -1,0 +1,24 @@
+.error {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.error-card {
+  width: 500px;
+  height: 300px;
+  background: white;
+  border-radius: 10px;
+}
+
+.error-close-btn-wrap {
+  text-align: right;
+}
+
+.error-close-btn {
+  display: inline;
+}
+

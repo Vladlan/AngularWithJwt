@@ -1,0 +1,19 @@
+<div class="error" *ngIf="displayed">
+  <div class="error-card">
+    <div class="error-close-btn-wrap">
+    <div class="error-close-btn"
+         (click)="displayed=false"
+    >
+      close
+    </div>
+    </div>
+
+    <div class="error-msg">
+      <h3>Error Title</h3>
+
+      <p>Error message</p>
+    </div>
+
+
+  </div>
+</div>

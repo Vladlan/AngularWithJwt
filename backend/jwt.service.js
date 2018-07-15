@@ -28,6 +28,7 @@ exports.getJWT = function(someUser) {
 exports.verifyAndDecodeJWT = function(token) {
   return jwt.verify(token, jwtSecret, (err, decoded) => {
     if (err) {
+      console.log(err.message);
       return false
     }
     if (decoded) {
