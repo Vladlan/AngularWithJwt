@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../services/auth.service';
 import { Router} from '@angular/router';
-import {LocalStorageService} from '../services/localstorage.service';
 import {NgForm} from '@angular/forms';
 import {environment} from '../../environments/environment';
 
@@ -21,8 +20,7 @@ export class SignInPageComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private router: Router,
-    private localStorageService: LocalStorageService
+    private router: Router
   ) {}
 
 
@@ -35,12 +33,15 @@ export class SignInPageComponent implements OnInit {
     const Password = form.value.Password;
 
     this.sendUserToDb(Email, Surname, Name, Password).subscribe(
-      (data: {token: string}) => {
+      (data: {
+        message: string,
+        token: string,
+        expiresIn: number
+      }) => {
         console.log(data);
         console.log('User has been added');
 
-        this.localStorageService.setItem('auth-token', data.token);
-        this.authService.logIn();
+        this.authService.logIn(data);
         this.router.navigate(['/']);
       },
       error => {

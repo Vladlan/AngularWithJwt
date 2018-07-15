@@ -19,5 +19,12 @@
     "name": "Vlad",
     "password": "12345",
     "uuid": "uuid6.744131973179501"
+  },
+  "lanvlad@mail3.ru": {
+    "email": "lanvlad@mail3.ru",
+    "surname": "Lan",
+    "name": "Vlad",
+    "password": "12345",
+    "uuid": "uuid2.06881563174526"
   }
 }

@@ -12,11 +12,7 @@ export class AuthTruthyGuardService implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
-  ): Observable<boolean> |
-    Promise<boolean> {
-    return this.authService.isAuth().then( (isLoggedIn: boolean) => {
-      console.log(`isLoggedIn = ${isLoggedIn} in auth-truthy-guard`);
-      return isLoggedIn;
-    });
+  ): boolean {
+    return this.authService.isLoggedIn();
   }
 }

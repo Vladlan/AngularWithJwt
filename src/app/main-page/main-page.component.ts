@@ -8,18 +8,9 @@ import {AuthService} from '../services/auth.service';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private authService: AuthService) {
+  constructor() {
   }
 
-  ngOnInit() {
-    // if user entered again we need to check does he/she need to login again
-    this.authService.isAuth().then((isLoggedIn: boolean) => {
-      // so if user entered some time ago and has his token valid in local storage
-      // we need to change "isLoggedIn" variable to true
-      if (!isLoggedIn) {
-        this.authService.check().subscribe();
-      }
-    });
-  }
+  ngOnInit() {}
 
 }

@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
-import {LocalStorageService} from '../services/localstorage.service';
 
 @Component({
   selector: 'app-login-page',
@@ -20,7 +19,6 @@ export class LoginPageComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private router: Router,
-    private localStorageService: LocalStorageService
   ) {
   }
 
@@ -32,11 +30,15 @@ export class LoginPageComponent implements OnInit {
     const Password = form.value.Password;
 
     this.login(Email, Password).subscribe(
-      (data: { token: string } ) => {
+      (data: {
+        message: string,
+        token: string,
+        expiresIn: number
+      }) => {
         if (data) {
           console.log(data);
-          this.localStorageService.setItem('auth-token', data.token);
-          this.authService.logIn();
+          console.log(typeof data.expiresIn);
+          this.authService.logIn(data);
           this.router.navigate(['/randUser']);
         } else {
           console.log(data);

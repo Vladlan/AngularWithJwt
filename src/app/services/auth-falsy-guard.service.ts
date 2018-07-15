@@ -12,8 +12,7 @@ export class AuthFalsyGuardService implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
-  ): Observable<boolean> |
-    Promise<boolean> {
-    return this.authService.isAuth().then( (isLoggedIn: boolean) => !isLoggedIn);
+  ): boolean {
+    return !this.authService.isLoggedIn();
   }
 }

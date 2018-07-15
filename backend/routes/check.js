@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const jwtService = require('../jwt.service');
 const path = require('path');
-
 const dbFilePath = path.join(__dirname, '../db.json');
 const jsonDb = require(dbFilePath);
 

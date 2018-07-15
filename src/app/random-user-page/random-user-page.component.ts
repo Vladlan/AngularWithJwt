@@ -20,21 +20,6 @@ export class RandomUserPageComponent implements OnInit {
 
   ngOnInit() {
     this.randomUser = this.randomUserService.randomUser;
-
-    // if user entered again we need to check does he/she need to login again
-    this.authService.isAuth().then((isLoggedIn: boolean) => {
-      // so if user entered some time ago and has his token valid in local storage
-      // we need to change "isLoggedIn" variable to true
-      if (!isLoggedIn) {
-        this.authService.check().subscribe(
-          (data: boolean) => {
-            if (!data) {
-              this.router.navigate(['/']);
-            }
-          }
-        );
-      }
-    });
   }
 
   getRandomUser() {

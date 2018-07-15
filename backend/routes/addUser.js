@@ -46,7 +46,8 @@ router.post('/', authenticate, function(req, res) {
 
     res.status(200).json({
       message: 'Successfully Signed In',
-      token: jwtService.getJWT(newUser)
+      token: jwtService.getJWT(newUser),
+      expiresIn: 1500
     });
   }
 });

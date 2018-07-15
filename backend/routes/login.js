@@ -37,7 +37,8 @@ router.post('/', authenticate, function(req, res) {
     console.log(`user ${req.body.email} loginned successfully`);
     res.status(200).json({
       message: 'Successfully Logined In',
-      token: jwtService.getJWT(jsonDb[req.body.email])
+      token: jwtService.getJWT(jsonDb[req.body.email]),
+      expiresIn: 1500
     });
   }
 });

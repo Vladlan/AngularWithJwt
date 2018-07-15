@@ -4,14 +4,14 @@
   <nav>
     <div>
     <button
-      *ngIf="!authService.isLoggedIn && authService.isAuthorizationChecked"
+      *ngIf="!authService.isLoggedIn()"
       routerLink="/login"
     >
       Log In
     </button>
 
       <button
-        *ngIf="!authService.isLoggedIn && authService.isAuthorizationChecked"
+        *ngIf="!authService.isLoggedIn()"
         routerLink="/signIn"
       >
         Sign In
@@ -19,7 +19,7 @@
 
 
     <button
-      *ngIf="authService.isLoggedIn && authService.isAuthorizationChecked"
+      *ngIf="authService.isLoggedIn()"
       (click)="authService.logOut()"
       routerLink="/"
     >
@@ -37,7 +37,7 @@
         </a>
       </li>
 
-      <li *ngIf="authService.isLoggedIn && authService.isAuthorizationChecked">
+      <li *ngIf="authService.isLoggedIn()">
         <a
            routerLink="/randUser"
            routerLinkActive="active"
@@ -50,12 +50,3 @@
 </header>
 
 <router-outlet></router-outlet>
-
-<button
-  *ngIf="authService.isLoggedIn && authService.isAuthorizationChecked"
-  (click)="authService.logOut()"
-  routerLink="/"
->
-  Error
-</button>
-<app-error></app-error>
