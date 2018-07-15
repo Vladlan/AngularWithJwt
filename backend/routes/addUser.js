@@ -13,7 +13,7 @@ router.post('/', authenticate, function(req, res) {
     console.log(req.body);
     return res.status(401).json({
       title: 'Sign In failed',
-      error: {message: 'Wrong request body.'}
+      message: 'Wrong request body.'
     });
   }
 
@@ -22,7 +22,7 @@ router.post('/', authenticate, function(req, res) {
     console.log(req.body.email);
     return res.status(401).json({
       title: 'Sign In failed',
-      error: {message: 'This email already exists.'}
+      message: 'This email already exists.'
     });
   }
 

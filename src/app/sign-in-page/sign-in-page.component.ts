@@ -45,7 +45,7 @@ export class SignInPageComponent implements OnInit {
         this.router.navigate(['/']);
       },
       error => {
-          alert(error.error.error.message);
+          alert(error.error.message);
       }
     );
   }

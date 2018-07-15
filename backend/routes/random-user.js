@@ -14,14 +14,24 @@ router.get('/', function(req, res) {
   if (jwtService.verifyAndDecodeJWT(userToken)) {
     //Maybe later user will be replaced with db
     let verifiableEmail = jwtService.verifyAndDecodeJWT(userToken).email;
+    console.log(jwtService.verifyAndDecodeJWT(userToken));
     console.log(`user with token ${userToken} passed verification`);
-    if (!!jsonDb[verifiableEmail] ) {
+    if (!!jsonDb[verifiableEmail]) {
       let user = faker.helpers.createCard();
-      res.json(user);
+      // res.json(user);
+      return res.status(200).json({
+        user: user
+      });
     }
   } else {
     console.log(`user with token ${userToken} failed verification`);
-    res.send(false);
+    console.log(jwtService.verifyAndDecodeJWT(userToken));
+    console.log(typeof jwtService.verifyAndDecodeJWT(userToken));
+    // res.send(false);
+    return res.status(401).json({
+      title: 'Access denied',
+      message: 'User credentials expired or wrong'
+    });
   }
 });
 

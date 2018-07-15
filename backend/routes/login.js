@@ -20,7 +20,7 @@ router.post('/', authenticate, function(req, res) {
     console.log(req.body.email);
     return res.status(401).json({
       title: 'Login failed',
-      error: {message: 'Invalid login email'}
+      message: 'Invalid login email'
     });
   }
 
@@ -29,7 +29,7 @@ router.post('/', authenticate, function(req, res) {
     console.log(req.body.password);
     return res.status(401).json({
       title: 'Login failed',
-      error: {message: 'Invalid login password'}
+      message: 'Invalid login password'
     });
   }
 
@@ -42,8 +42,6 @@ router.post('/', authenticate, function(req, res) {
     });
   }
 });
-
-
 
 //middleware
 function authenticate(req, res, next) {

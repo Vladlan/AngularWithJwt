@@ -1,18 +1,12 @@
 import {Injectable} from '@angular/core';
 import {LocalStorageService} from './localstorage.service';
-import {environment} from '../../environments/environment';
-import {HttpClient} from '@angular/common/http';
-import {tap} from 'rxjs/operators';
 import * as moment from 'moment';
 
 @Injectable()
 export class AuthService {
 
-  isAuthorizationChecked = true;
-
   constructor(
-    private localStorageService: LocalStorageService,
-    private http: HttpClient
+    private localStorageService: LocalStorageService
   ) {
   }
 
@@ -41,15 +35,4 @@ export class AuthService {
     this.localStorageService.removeItem('auth-token');
     this.localStorageService.removeItem('expires_at');
   }
-
-  // check() {
-  //   return this.http.get(environment.BASE_URL + '/check')
-  //     .pipe(tap((data: boolean) => {
-  //         this.isLoggedIn = data;
-  //         return data;
-  //       }
-  //       )
-  //     );
-  // }
-
 }

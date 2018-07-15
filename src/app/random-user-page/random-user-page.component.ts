@@ -10,9 +10,7 @@ import {Router} from '@angular/router';
 })
 export class RandomUserPageComponent implements OnInit {
   constructor(
-    private randomUserService: RandomUserService,
-    private authService: AuthService,
-    private router: Router,
+    private randomUserService: RandomUserService
   ) {
   }
 
@@ -27,6 +25,10 @@ export class RandomUserPageComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.randomUser = this.randomUserService.randomUser;
+        },
+        (error) => {
+          console.log(error);
+
         }
       );
   }
